@@ -17,7 +17,7 @@ var https_options = {
 
 var https_server = restify.createServer(https_options);
 https_server.listen(443, function () {
-   console.log('%s listening to %s', server.name, server.url); 
+   console.log('%s listening to %s', https_server.name, https_server.url); 
 });
 
 require('dotenv').config({silent: true});
