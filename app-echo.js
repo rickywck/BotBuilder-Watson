@@ -10,8 +10,13 @@ var https_options = {
   };
 
 // Setup Restify Server
-var server = restify.createServer(https_options);
-server.listen(443, function () {
+var server = restify.createServer();
+server.listen(80, function () {
+   console.log('%s listening to %s', server.name, server.url); 
+});
+
+var https_server = restify.createServer(https_options);
+https_server.listen(443, function () {
    console.log('%s listening to %s', server.name, server.url); 
 });
 
@@ -27,6 +32,7 @@ var connector = new builder.ChatConnector({
 
 // Listen for messages from users 
 server.post('/api/messages', connector.listen());
+https_server.post('/api/messages', connector.listen());
 
 // Receive messages from the user and respond by echoing each message back (prefixed with 'You said:')
 var bot = new builder.UniversalBot(connector, function (session) {
