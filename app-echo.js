@@ -6,7 +6,7 @@ var fs = require('fs');
 var https_options = {
     ca:  fs.readFileSync('/home/bitnami/COMODO_DV_SHA-256_bundle.crt.zip'),
     key: fs.readFileSync('/home/bitnami/rickywck_mooo_com.key'),
-    certificate: fs.readFileSync('/home/bitnami/rickywck_mooo_com..crt')
+    certificate: fs.readFileSync('/home/bitnami/rickywck_mooo_com.crt')
   };
 
 // Setup Restify Server
