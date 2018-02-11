@@ -7,6 +7,10 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
    console.log('%s listening to %s', server.name, server.url); 
 });
 
+require('dotenv').config({silent: true});
+console.log("process.env.appID "+ process.env.appId); 
+console.log("process.env.appPassword "+ process.env.appPassword); 
+
 // Create chat connector for communicating with the Bot Framework Service
 var connector = new builder.ChatConnector({
     appId: process.env.appId,
