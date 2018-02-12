@@ -20,12 +20,20 @@ var Conversation = require('watson-developer-cloud/conversation/v1'); // watson 
 
 require('dotenv').config({silent: true});
 
+// Setup some https server options
+var fs = require('fs');
+var https_options = {
+    ca:  fs.readFileSync('/home/bitnami/COMODO_DV_SHA-256_bundle.crt.zip'),
+    key: fs.readFileSync('/home/bitnami/rickywck_mooo_com.key'),
+    certificate: fs.readFileSync('/home/bitnami/rickywck_mooo_com.crt')
+  };
+
 var contexts;
 var workspace=process.env.WORKSPACE_ID || '';
 
 // Setup Restify Server
-var server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function () {
+var server = restify.createServer(https_options);
+server.listen(process.env.port || process.env.PORT || 443, function () {
    console.log('%s listening to %s', server.name, server.url); 
 });
 
